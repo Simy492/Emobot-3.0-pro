@@ -1,0 +1,217 @@
+/* Estilos base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f0f0f0;
+  transition: background-color 0.6s ease;
+  text-align: center;
+  color: #333;
+}
+
+h1 { margin-top: 20px; font-size: 2em; color: #444; }
+.container { padding: 20px; max-width: 900px; margin: 0 auto; }
+
+/* Robot facial structure */
+.robot {
+  width: 180px;
+  height: 180px;
+  margin: 30px auto;
+  border: 6px solid #333;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+}
+
+.cara { position: relative; width: 100%; height: 100%; }
+.ojos {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.ojo {
+  width: 40px;
+  height: 40px;
+  background: #eee;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pupila {
+  width: 15px;
+  height: 15px;
+  background: #000;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Cejas animadas */
+.cejas {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+.ceja {
+  width: 30px;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animaciones clave */
+@keyframes blink {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+@keyframes tremble {
+  0%,100% { transform: translateX(0); }
+  33% { transform: translateX(-2px); }
+  66% { transform: translateX(2px); }
+}
+
+/* Boca básica y animada */
+.boca {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 80px;
+  height: 25px;
+  margin-left: -40px;
+  transition: all 0.3s ease;
+}
+
+/* Detalles emocionales avanzados */
+
+/* ALEGRÍA */
+.robot.happy .ceja { transform: translateY(-10px); }
+.robot.happy .pupila { transform: scale(1.3); }
+.robot.happy .boca {
+  border: 4px solid #000;
+  border-top: none;
+  border-radius: 0 0 60px 60px;
+  height: 40px;
+  animation: tremble 0.5s infinite alternate ease-in-out;
+}
+
+/* TRISTEZA */
+.robot.sad .ceja.izquierda { transform: rotate(-20deg) translateY(5px); }
+.robot.sad .ceja.derecha { transform: rotate(20deg) translateY(5px); }
+.robot.sad .pupila { transform: scale(0.7); }
+.robot.sad .boca {
+  border: 4px solid #000;
+  border-bottom: none;
+  border-radius: 60px 60px 0 0;
+  height: 30px;
+}
+
+/* IRA */
+.robot.angry .ceja.izquierda { transform: rotate(20deg) translateY(5px); }
+.robot.angry .ceja.derecha { transform: rotate(-20deg) translateY(5px); }
+.robot.angry .pupila { transform: scale(1.1); }
+.robot.angry .boca {
+  background: #000;
+  width: 50px;
+  height: 8px;
+  border-radius: 2px;
+  margin-left: -25px;
+  animation: tremble 0.1s infinite linear;
+}
+
+/* MIEDO */
+.robot.fear .ceja.izquierda { transform: rotate(-20deg) translateY(5px); }
+.robot.fear .ceja.derecha { transform: rotate(20deg) translateY(5px); }
+.robot.fear .ojo { width: 30px; height: 50px; }
+.robot.fear .pupila { transform: scale(0.5); }
+.robot.fear .boca {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #000;
+  border-radius: 50%;
+}
+
+/* SORPRESA */
+.robot.surprise .ceja { transform: translateY(-15px); }
+.robot.surprise .ojo { width: 45px; height: 45px; }
+.robot.surprise .pupila { transform: scale(1.5); }
+.robot.surprise .boca {
+  width: 35px;
+  height: 35px;
+  border: 4px solid #000;
+  border-radius: 50%;
+}
+
+/* NEUTRAL */
+.robot.neutral .ceja { transform: none; }
+.robot.neutral .pupila { transform: scale(1); }
+.robot.neutral .boca {
+  background: #000;
+  width: 40px;
+  height: 6px;
+  border-radius: 3px;
+  margin-left: -20px;
+}
+
+/* Fondos según emoción */
+body.happy { background-color: #fff9c4; }
+body.sad { background-color: #bbdefb; }
+body.angry { background-color: #ffcdd2; }
+body.fear { background-color: #e1bee7; }
+body.surprise { background-color: #d1c4e9; }
+body.neutral { background-color: #eeeeee; }
+
+/* Botones e info */
+.botones-emocion { margin: 20px 0; }
+.botones-emocion button {
+  margin: 5px;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.botones-emocion button:hover { background-color: #357ab8; }
+
+.info-emocion, .info-clasificacion {
+  background: #fff;
+  margin: 15px auto;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 700px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.emociones-secundarias {
+  margin: 20px auto;
+  padding: 15px;
+  max-width: 700px;
+  background: #fff8e1;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+.emociones-secundarias ul { list-style: none; padding: 0; margin: 10px 0 0 0; }
+.emociones-secundarias li { font-size: 16px; margin: 6px 0; }
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .botones-emocion button { width: 100%; margin: 5px 0; }
+  .robot { width: 140px; height: 140px; }
+}

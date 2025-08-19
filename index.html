@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Emobot 3.0 Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="neutral">
+  <div class="container">
+    <h1>🤖 Emobot 3.0 Pro — Explorador de emociones</h1>
+
+    <!-- Robot visual -->
+    <div class="robot" id="robot">
+      <div class="cara">
+        <div class="ojos">
+          <div class="ojo izquierdo">
+            <div class="pupila"></div>
+          </div>
+          <div class="ojo derecho">
+            <div class="pupila"></div>
+          </div>
+        </div>
+        <div class="cejas">
+          <div class="ceja izquierda"></div>
+          <div class="ceja derecha"></div>
+        </div>
+        <div class="boca"></div>
+      </div>
+    </div>
+
+    <!-- Botones de emoción -->
+    <div class="botones-emocion">
+      <h2>Seleccioná una emoción:</h2>
+      <button onclick="setEmotion('happy')">😊 Alegría</button>
+      <button onclick="setEmotion('sad')">😢 Tristeza</button>
+      <button onclick="setEmotion('angry')">😠 Ira</button>
+      <button onclick="setEmotion('fear')">😨 Miedo</button>
+      <button onclick="setEmotion('surprise')">😮 Sorpresa</button>
+      <button onclick="setEmotion('neutral')">😐 Neutral</button>
+      <button onclick="emocionAleatoria()">🎲 Emoción Sorpresa</button>
+    </div>
+
+    <!-- Información de la emoción -->
+    <div class="info-emocion" id="info-emocion">
+      <h2>Seleccioná una emoción para ver su descripción</h2>
+    </div>
+
+    <!-- Clasificación de la emoción -->
+    <div class="info-clasificacion" id="info-clasificacion">
+      <!-- Se actualiza desde JS -->
+    </div>
+
+    <!-- Emociones secundarias -->
+    <div class="emociones-secundarias">
+      <h3>🌈 Emociones relacionadas</h3>
+      <ul id="secundarias-lista"></ul>
+    </div>
+  </div>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
